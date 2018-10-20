@@ -6,7 +6,7 @@ font pango:GohuFont Nerd Font 22
 bindsym $mod+$mod2+q exec chromium --force-device-scale-factor=1.6
 bindsym $mod+$mod2+w exec nemo
 bindsym $mod+$mod2+e exec code
-bindsym $mod+$mod2+r exec atom
+bindsym $mod+$mod2+r exec slack
 
 #---i3 DEBUGGING (F1-3)---
 bindsym $mod+F1 restart
