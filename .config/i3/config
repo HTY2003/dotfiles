@@ -8,7 +8,7 @@ bindsym $mod+$mod2+w exec nemo
 bindsym $mod+$mod2+e exec code
 bindsym $mod+$mod2+r exec atom
 
-#---i3 DEBUGGING (F1-9)---
+#---i3 DEBUGGING (F1-3)---
 bindsym $mod+F1 restart
 bindsym $mod+F2 exec --no-startup-id /home/hty/.config/i3/lemonbar.sh
 bindsym $mod+F3 exec --no-startup-id /home/hty/.config/i3/conky.sh
@@ -112,11 +112,11 @@ bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+6 move container to workspace $ws1
+bindsym $mod+7 move container to workspace $ws2
+bindsym $mod+8 move container to workspace $ws3
+bindsym $mod+9 move container to workspace $ws4
+bindsym $mod+10 move container to workspace $ws5
 
 # lock, lock+suspend, reboot, power off (F9-12)
 bindsym $mod+F9 exec i3lock-next 'All your base are belong to us.' 'GohuFont Nerd Font' 40
