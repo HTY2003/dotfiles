@@ -1,16 +1,21 @@
 set $mod Mod1
 set $mod2 Mod4
-font pango:Terminus 25
+font pango:GohuFont Nerd Font 22
 
 #---APPLICATIONS---
-bindsym $mod+$mod2+q exec chromium  --force-device-scale-factor=1.7
-bindsym $mod+$mod2+w exec nautilus
+bindsym $mod+$mod2+q exec chromium --force-device-scale-factor=1.6
+bindsym $mod+$mod2+w exec nemo
 bindsym $mod+$mod2+e exec code
 bindsym $mod+$mod2+r exec atom
 
+#---i3 DEBUGGING (F1-9)---
+bindsym $mod+F1 restart
+bindsym $mod+F2 exec --no-startup-id /home/hty/.config/i3/lemonbar.sh
+bindsym $mod+F3 exec --no-startup-id /home/hty/.config/i3/conky.sh
+
+
 #---STATUS BAR---
-exec_always --no-startup-id /home/hty/.config/i3/lemonbar.sh
-exec_always --no-startup-id python3 /home/hty/.config/i3/lemonbar_status.py
+exec --no-startup-id python3 /home/hty/.config/i3/lemonbar_status.py
 
 #---CONKY---
 exec --no-startup-id conky -d -c /home/hty/.config/i3/.conkyrc
@@ -22,54 +27,56 @@ exec --no-startup-id feh --bg-scale /home/hty/Pictures/circle.jpg
 exec --no-startup-id synclient NaturalScrolling=1
 
 #---LOCK SCREEN---
-exec --no-startup-id xautolock -time 5 -locker 'i3lock-next LOCKED Terminus 30'
+exec --no-startup-id i3lock-next 'UNLOCK TO CONTINUE' 'GohuFont Nerd Font' 40
+exec --no-startup-id xautolock -time 10 -locker "i3lock-next 'UNLOCK TO CONTINUE' 'GohuFont Nerd Font' 40"
 
-#---FN KEYS---
-bindsym XF86Suspend exec systemctl suspend && i3lock-next LOCKED Terminus 30
-bindsym XF86KbdBrightnessUp exec /usr/local/bin/kb-light.py + 1
+#---FN + FN KEYS---
+bindsym XF86Sleep exec systemctl suspend && i3lock-next 'Give us $1000000 for your computer back' 'GohuFont Nerd Font' 40
+bindsym XF86KbdBrightnessUp exec /usr/local/bin/kb-light.py + 2
 bindsym XF86KbdBrightnessDown exec /usr/local/bin/kb-light.py - 2
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2 # decrease screen brightness
-bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 2%+ #increase sound volume
-bindsym XF86AudioLowerVolume exec amixer sset 'Master' 2%- #decrease sound volume
+bindsym XF86MonBrightnessUp exec xbacklight -inc 2
+bindsym XF86MonBrightnessDown exec xbacklight -dec 2
+bindsym XF86AudioRaiseVolume exec amixer sset 'Master' 2%+
+bindsym XF86AudioLowerVolume exec amixer sset 'Master' 2%-
 bindsym XF86AudioMute exec amixer sset 'Master' toggle
 
 #---WINDOW GAPS---
-gaps inner 20
-gaps outer 20
+gaps inner 17
+gaps outer 17
 
-new_window pixel 3
+new_window pixel 5
 smart_borders on
 
 #---COLORS---
 # class                 border  backgr. text    indicator child_border
-client.focused          #C8C8C8 #C8C8C8 #ECEFF4 #D08770  #C8C8C8
-client.focused_inactive #4C566A #434C5E #ECEFF4 #D08770  #4C566A
-client.unfocused        #3B4252 #2E3440 #ECEFF4 #D8DEE9  #3B4252
-client.urgent           #EBCB8B #EBCB8B #ECEFF4 #900000  #EBCB8B
-client.placeholder      #2E3440 #2E3440 #ECEFF4 #000000  #2E3440
+client.focused          #D8DEE9 #ECEFF4 #3B4252 #D8DEE9  #D8DEE9
+client.focused_inactive #D8DEE9 #ECEFF4 #3B4252 #D8DEE9  #D8DEE9
+client.unfocused        #3B4252 #3B4252 #D8DEE9 #3B4252  #3B4252
+client.urgent           #BF616A #3B4252 #BF616A #BF616A  #BF616A
+client.placeholder      #3B4252 #3B4252 #D8DEE9 #3B4252  #3B4252
 
-client.background       #ECEFF4
+client.background       #D8DEE9
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
 # terminal, killing windows, and dmenu
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+q kill
-bindsym $mod+apostrophe exec dmenu_run -fn 'terminus-25' -nb '#2E3440' -nf '#D8DEE9' $
+bindsym $mod+Tab kill
+bindsym $mod+apostrophe exec dmenu_run -fn 'GohuFont Nerd Font-23' -nb '#3B4252' -nf '#D8DEE9' -sb '#BF616A' -sf '#ECEFF4'
+bindsym $mod+semicolon exec dmenu_run -fn 'GohuFont Nerd Font-23' -nb '#3B4252' -nf '#D8DEE9' -sb '#BF616A' -sf '#ECEFF4'
 
-# switching windows focus (WASD)
+# switching windows focus (arrow keys)
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window (WASD)
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+a move left
+bindsym $mod+s move down
+bindsym $mod+w move up
+bindsym $mod+d move right
 
 # split in horizontal/vertical orientation
 bindsym $mod+h split h
@@ -79,30 +86,23 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout
-#bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+bracketleft layout tabbed
+bindsym $mod+bracketright layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+backslash focus mode_toggle
 
 # focus the parent container
-# focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -110,11 +110,6 @@ bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -122,18 +117,12 @@ bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
 
-# suspend, reload, restart, exit
-bindsym $mod+Shift+semicolon exec i3lock-next LOCKED Terminus 30
-bindsym $mod+Shift+l exec systemctl suspend && i3lock-next LOCKED Terminus 30
-bindsym $mod+Shift+k exec systemctl reboot
-bindsym $mod+Shift+j exec systemctl poweroff
-bindsym $mod+Shift+r restart
+# lock, lock+suspend, reboot, power off (F9-12)
+bindsym $mod+F9 exec i3lock-next 'All your base are belong to us.' 'GohuFont Nerd Font' 40
+bindsym $mod+F10 exec systemctl suspend && i3lock-next 'Give us $1000000 for your computer back' 'GohuFont Nerd Font' 40
+bindsym $mod+F11 exec systemctl reboot
+bindsym $mod+F12 exec systemctl poweroff
 
 # resize window
 bindsym $mod+r mode resize
@@ -143,8 +132,14 @@ mode "resize" {
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
+	
+	bindsym w resize shrink width 10 px or 10 ppt
+        bindsym a resize grow height 10 px or 10 ppt
+        bindsym s resize shrink height 10 px or 10 ppt
+        bindsym d resize grow width 10 px or 10 ppt
 
         # back to normal
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
+}
