@@ -8,3 +8,7 @@ Font for everything else: Gohufont (from nerd-fonts-complete)
 Icon Font: Font Awesome 5 Free
 
 Conky Font: Terminus
+
+Locker: i3-lock-next
+
+
