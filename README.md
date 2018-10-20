@@ -2,11 +2,11 @@
 
 Linux distro: Manjaro Linux
 
-Window Manager: i3-gaps 
+Window Manager: [i3-gaps](https://github.com/Airblader/i3) 
 
 Color Palette: Nord by [Arctic Ice Studio](https://www.github.com/arcticicestudio/nord)
 
-Font for everything else: Gohufont (from nerd-fonts-complete)
+Font for everything else: Gohufont (from [nerd-fonts-complete](https://aur.archlinux.org/packages/nerd-fonts-complete/))
 
 Icon Font: Font Awesome 5 Free
 
