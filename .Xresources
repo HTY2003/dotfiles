@@ -1,27 +1,29 @@
 #include </home/hty/.nord>
 URxvt.transparent: true
-URxvt.shading: 25
-URxvt.font: xft:Terminus:size=30
-URxvt.boldFont:  xft:Terminus:bold:size=30
-
+URxvt.shading: 30
+URxvt.font: xft:GohuFont Nerd Font Mono:size=23
+URxvt.boldFont: xft:GohuFont Nerd Font:size=25
 URxvt.scrollBar: false
 URxvt.letterSpace: 1
 URxvt.iso14755: true
 URxvt.iso14755_52: false
-URxvt.internalBorder:           35
+URxvt.internalBorder:           33
 URxvt.perl-ext-common:          default,clipboard
 URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
 URxvt.clipboard.autocopy:       true
 
+XTerm*scrollbar: true
 XTerm*renderFont: true
 XTerm*faceName: Terminus
 XTerm*faceSize: 30
 
+Xcursor.size: 48
+
 ! Colors
-*background:   nord0
-*foreground:   nord4
-*cursorColor:  nord11
+*background:   nord1
+*foreground:   nord5
+*cursorColor:  nord14
 
 ! black
 *color0:      nord1
@@ -54,3 +56,4 @@ XTerm*faceSize: 30
 ! white
 *color7:      nord5
 *color15:     nord6
+
