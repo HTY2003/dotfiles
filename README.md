@@ -26,11 +26,9 @@ Alt + Win + W => Launch Nemo
 
 Alt + Win + E => Launch VS Code 
 
-Alt + Win + R => Launch Atom
+Alt + Win + R => Launch Slack
 
-Alt + Semicolon => Launch dmenu 
-
-Alt + Comma => Launch dmenu
+Alt + Semicolon/Comma => Launch dmenu 
 
 ### Window Control
 Alt + Tab => Kill window
