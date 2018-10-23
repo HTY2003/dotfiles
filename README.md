@@ -16,15 +16,15 @@ Bar: Lemonbar
 
 Terminal: urxvt
 
-
+i3 config and shortcuts [here](https://github.com/HTY2003/dotfiles/tree/master/.config/i3)
 
 ## Dependencies
-* i3-gaps (no duh)
+* i3-gaps
 * feh (for background)
-* j4-dmenu-desktop + dmenu (to open applications)
-* scrot (for screenshots using PrtSc)
-* lemonbar and python3 (for status bar)
+* j4-dmenu-desktop, dmenu (to open applications)
+* scrot (for screenshots)
 * i3-lock-next and xautolock (for lock screen and timer)
-* conky (for conky)
-* nerd-fonts-complete (for GohuFont)
-* Font Awesome 5 Free (for status bar icons)
+* lemonbar and python3
+* conky
+* nerd-fonts-complete
+* Font Awesome 5 Free
