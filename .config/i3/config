@@ -21,7 +21,7 @@ bindsym $mod+semicolon exec j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Ner
 
 #---AUXILLARY COMMANDS (F9-12)---
 bindsym $mod+F9 exec i3lock-next 'UNLOCK TO CONTINUE' 'GohuFont Nerd Font' 40
-bindsym $mod+F10 exec systemctl suspend && i3lock-next 'UNLOCK TO CONTINUE' '$
+bindsym $mod+F10 exec systemctl suspend && i3lock-next 'UNLOCK TO CONTINUE' 'GohuFont Nerd Font' 40
 bindsym $mod+F11 exec systemctl reboot
 bindsym $mod+F12 exec systemctl poweroff
 
