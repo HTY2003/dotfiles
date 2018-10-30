@@ -9,6 +9,10 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
 xrdb -merge ~/.Xresources -cpp /usr/bin/cpp
-i3lock-next 'UNLOCK TO CONTINUE' 'GohuFont Nerd Font' 40
+xrandr --dpi 192
+synclient NaturalScrolling=1 &
+feh --bg-scale /home/hty/Pictures/circle.jpg &
 compton &
+conky -d -c /home/hty/.config/i3/.conkyrc &
+python3 /home/hty/.config/i3/lemonbar_status.py &
 exec i3
