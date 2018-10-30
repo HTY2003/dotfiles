@@ -1,12 +1,8 @@
 #---SETUP---
 set $mod Mod1
 font pango:GohuFont Nerd Font 12
-exec --no-startup-id python3 /home/hty/.config/i3/lemonbar_status.py
-exec --no-startup-id conky -d -c /home/hty/.config/i3/.conkyrc
-exec --no-startup-id feh --bg-scale /home/hty/Pictures/circle.jpg
+exec --no-startup-id i3lock-next '' 'GohuFont Nerd Font' 20
 exec --no-startup-id xautolock -time 10 -locker "i3lock-next '' 'GohuFont Nerd Font' 20
-exec --no-startup-id synclient NaturalScrolling=1
-exec --no-startup-id xrandr --dpi 192
 
 #---i3 DEBUGGING (F1-3)---
 bindsym $mod+F1 restart
@@ -16,13 +12,13 @@ bindsym $mod+F3 exec --no-startup-id /home/hty/.config/i3/conky.sh
 #---APPLICATIONS---
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Tab kill
-bindsym $mod+apostrophe exec j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Nerd Font-12' -nb '#3B4252' -nf '#D8DEE9' -sb '#BF616A' -sf '#ECEFF4'" --term="i3-sensible-terminal"
-bindsym $mod+semicolon exec j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Nerd Font-12' -nb '#3B4252' -nf '#D8DEE9' -sb '#BF616A' -sf '#ECEFF4'" --term="i3-sensible-terminal"
+bindsym $mod+apostrophe exec sudo j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Nerd Font-12' -nb '#3B4252' -nf '#D8DEE9' -sb '#BF616A' -sf '#ECEFF4'" --term="i3-sensible-terminal"
+bindsym $mod+semicolon exec sudo j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Nerd Font-12' -nb '#3B4252' -nf '#D8DEE9' -sb '#BF616A' -sf '#ECEFF4'" --term="i3-sensible-terminal"
 
-bindsym $mod+q exec chromium --high-dpi-support=1 --force-device-scale-factor=1.5 --disable-gpu
-bindsym $mod+w exec nemo
+bindsym $mod+q exec chromium --high-dpi-support=1 --force-device-scale-factor=1.5
+bindsym $mod+w exec sudo nemo
 bindsym $mod+e exec slack
-bindsym $mod+r exec i3-sensible-terminal -e vim
+bindsym $mod+r exec sudo i3-sensible-terminal -e vim
 
 #---AUXILLARY COMMANDS (F9-12)---
 bindsym $mod+F9 exec i3lock-next '' 'GohuFont Nerd Font' 20
@@ -32,7 +28,7 @@ bindsym $mod+F12 exec systemctl poweroff
 
 #---WINDOW SETTINGS---
 gaps inner 11
-new_window pixel 3
+new_window pixel 2
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #D8DEE9 #ECEFF4 #3B4252 #D8DEE9   #D8DEE9
