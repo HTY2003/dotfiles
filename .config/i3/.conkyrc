@@ -2,9 +2,9 @@ use_xft yes
 xftalpha 0.8
 update_interval 1.5
 total_run_times 0
-own_window no
-own_window_type normal
-own_window_transparent yes
+own_window yes
+own_window_type override
+own_window_transparent no
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 double_buffer yes
 minimum_size 220 5
@@ -15,7 +15,7 @@ draw_borders no
 draw_graph_borders no
 default_color white
 default_shade_color black
-default_outline_color red
+default_outline_color white
 alignment top_right
 gap_x 48
 gap_y 80
@@ -36,7 +36,7 @@ color4 EBCB8B #nord13
 color5 A3BE8C #nord14
  
 TEXT
-${font Terminus:size=19}${color1}System ${hr 3}${color}${font Terminus:size=19} 
+${font Terminus:size=9}${color1}System ${hr 3}${color}${font Terminus:size=9} 
 
 Hostname: $alignr$nodename
 OS: $alignr Manjaro Linux (x86_64 bit)
@@ -48,7 +48,7 @@ CPU Freq: ${alignr}${freq} MHz
 CPU Load: ${alignr}${loadavg 1}
 Processes: ${alignr}$processes ($running_processes running)
  
-${font Terminus:size=19}${color2}Hardware ${hr 1}${color}${font Terminus:size=19}
+${font Terminus:size=9}${color2}Hardware ${hr 1}${color}${font Terminus:size=9}
 
 ${color}${execi 1000 cat /proc/cpuinfo | grep 'model name' | uniq | cut -c 14-80}${color}
 ${cpugraph 6 115,500 BF616A FF616A}
@@ -67,21 +67,21 @@ ${membar 8}
 Swap ${alignr}$swap / $swapmax ($swapperc%)
 ${swapbar 8}
  
-${font Terminus:size=19}${color3}Processes ${hr 1}${color}${font Terminus:size=19}
+${font Terminus:size=9}${color3}Processes ${hr 1}${color}${font Terminus:size=9}
  
-${font Terminus:bold:size=19}Highest CPU Usage $alignr CPU%  RAM%${font Terminus:size=19}
+${font Terminus:bold:size=9}Highest CPU Usage $alignr CPU%  RAM%${font Terminus:size=9}
 ${top name 1}$alignr${top cpu 1}${top mem 1}
 ${top name 2}$alignr${top cpu 2}${top mem 2}
 ${top name 3}$alignr${top cpu 3}${top mem 3}
 ${top name 4}$alignr${top cpu 4}${top mem 4}
  
-${font Terminus:bold:size=19}Highest RAM Usage $alignr CPU%  RAM%${font Terminus:size=19}
+${font Terminus:bold:size=9}Highest RAM Usage $alignr CPU%  RAM%${font Terminus:size=9}
 ${top_mem name 1}$alignr${top_mem cpu 1}${top_mem mem 1}
 ${top_mem name 2}$alignr${top_mem cpu 2}${top_mem mem 2}
 ${top_mem name 3}$alignr${top_mem cpu 3}${top_mem mem 3}
 ${top_mem name 4}$alignr${top_mem cpu 4}${top_mem mem 4}
  
-${font Terminus:size=19}${color4}Filesystem ${hr 1}${color}${font Terminus:size=19}
+${font Terminus:size=9}${color4}Filesystem ${hr 1}${color}${font Terminus:size=9}
  
 Root: ${alignr}${fs_free /} / ${fs_size /}
 ${fs_bar 4 /}
@@ -89,11 +89,10 @@ Home: ${alignr}${fs_free /home} / ${fs_size /home}
 ${fs_bar 4 /home}
 
 
-${font Terminus:size=19}${color5}Network ${hr 1}${color}${font Terminus:size=19}
+${font Terminus:size=9}${color5}Network ${hr 1}${color}${font Terminus:size=9}
  
 LAN: $alignr${addr wlp2s0}
 VPN: ${alignr}${if_up tun0}${color5}Enabled${else}${color2}Disabled$endif${color}
 Down ${downspeed wlp2s0} k/s ${alignr}Up ${upspeed wlp2s0} k/s
 ${downspeedgraph wlp2s0 105,230 8FBCBB A3BE8C} ${alignr}${upspeedgraph wlp2s0 105,230 8FBCBB A3BE8C}
 Total ${totaldown wlp2s0} ${alignr}Total ${totalup wlp2s0}
-
