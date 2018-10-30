@@ -1,6 +1,4 @@
 #include </home/hty/.nord>
-URxvt.transparent: true
-URxvt.shading: 30
 URxvt.font: xft:GohuFont Nerd Font Mono:size=23
 URxvt.boldFont: xft:GohuFont Nerd Font:size=25
 URxvt.scrollBar: false
@@ -12,11 +10,6 @@ URxvt.perl-ext-common:          default,clipboard
 URxvt.keysym.Shift-Control-C:   perl:clipboard:copy
 URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
 URxvt.clipboard.autocopy:       true
-
-XTerm*scrollbar: true
-XTerm*renderFont: true
-XTerm*faceName: Terminus
-XTerm*faceSize: 30
 
 Xcursor.size: 48
 
