@@ -1,8 +1,6 @@
-#include </home/hty/.nord>
-URxvt.font: xft:GohuFont Nerd Font Mono:size=23
-URxvt.boldFont: xft:GohuFont Nerd Font:size=25
+URxvt.font: xft:GohuFont Nerd Font:size=12
+URxvt.boldFont: xft:GohuFont Nerd Font:size=13
 URxvt.scrollBar: false
-URxvt.letterSpace: 1
 URxvt.iso14755: true
 URxvt.iso14755_52: false
 URxvt.internalBorder:           33
@@ -13,40 +11,44 @@ URxvt.clipboard.autocopy:       true
 
 Xcursor.size: 48
 
-! Colors
-*background:   nord1
-*foreground:   nord5
-*cursorColor:  nord14
-
+! special
+*.foreground:   #ffffff
+*.background:   #000000
+*.cursorColor:  #ffffff
+ 
 ! black
-*color0:      nord1
-*color8:      nord3
-
+*.color0:       #053fba
+*.color8:       #9fc4d9
+ 
 ! red
-*color1:      nord11
-*color9:      nord11
-
+*.color1:       #8f9ed7
+*.color9:       #a888db
+ 
 ! green
-*color2:      nord14
-*color10:     nord14
-
+*.color2:       #4979db
+*.color10:      #9664d3
+ 
 ! yellow
-*color3:      nord13
-*color11:     nord13
-
+*.color3:       #0f58ce
+*.color11:      #8649cb
+ 
 ! blue
-*color4:      nord9
-*color12:     nord9
-
+*.color4:       #8ab2fc
+*.color12:      #6e31c2
+ 
 ! magenta
-*color5:      nord15
-*color13:     nord15
-
+*.color5:       #227cd0
+*.color13:      #c251bd
+ 
 ! cyan
-*color6:      nord8
-*color14:     nord8
-
+*.color6:       #52a1dc
+*.color14:      #9e32c6
+ 
 ! white
-*color7:      nord5
-*color15:     nord6
+*.color7:       #71b5de
+*.color15:      #d65ad6
 
+URxvt.background:[80]#000000
+URxvt.cursorColor: magenta
+URxvt*fading: 30
+URxvt.depth: 32

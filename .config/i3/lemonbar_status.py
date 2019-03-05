@@ -9,21 +9,21 @@ import psutil
 
 # ---AESTHETICS---
 GEOMETRY = 'x38+0+0'
-FONT = 'GohuFont Nerd Font-11'
-FONT2 = 'Font Awesome 5 Free-11'
+FONT = 'GohuFont Nerd Font-10'
+FONT2 = 'Font Awesome 5 Free-8'
 DELAY = 0.2
 
 # ---COLORS---
-FG_BODY_NORMAL = '#D8DEE9'
-FG_HEADER_NORMAL = '#FFFFFF'
+FG_BODY_NORMAL = '#4979db'
+FG_HEADER_NORMAL = '#c251bd'
 
-BG_BODY_NORMAL = '#3B4252'
-BG_HEADER_NORMAL = '#3B4252'
+BG_BODY_NORMAL = '[100]#000000'
+BG_HEADER_NORMAL = '[100]#000000'
 
-FG_LOW_BATTERY = '#FF616A'
-BG_LOW_BATTERY = '#3B4252'
+FG_LOW_BATTERY = '#4979db'
+BG_LOW_BATTERY = '[100]#000000'
 
-BG_BAR = '#3B4252'
+BG_BAR = '[100]#000000'
 
 # ---ICONS---
 NOBATT = "\uf244"
@@ -76,7 +76,8 @@ def status_datetime():
     return datetime.now().strftime('%d/%m %H:%M')
 
 def status_volume():
-    return int(get_stdout("amixer get Master").split('\\n')[-2].split(' ')[-2][1:-2])
+    data = get_stdout("amixer get Master")
+    return int(data.split('\\n')[-2].split(' ')[-2][1:-2]) if data[-5] == 'n' else 0 
 
 def status_battery_level():
     with open(BATTERY_DIR + '/capacity') as f:
@@ -108,21 +109,6 @@ def status_connected():
 def status_network(): 
     return get_stdout('iwconfig').split('\\n')[0].split('ESSID:')[1].strip()[1:-1]
 
-def status_workspaces(low_batt):
-    num_workspaces = int(get_stdout("xdotool get_num_desktops")[2:-3])
-    cur_workspace = int(get_stdout("xdotool get_desktop")[2:-3])
-
-    workspaces_str = ''
-    for i in range(num_workspaces):
-        if low_batt:
-            workspaces_str += '{}{}'.format(format_fg('#ff616a')
-                                            if i == cur_workspace else format_fg('#bf616a'), i+1)
-        else:
-            workspaces_str += '{}{}'.format(format_fg('#ffffff') if i == cur_workspace else format_fg('#999999'), i+1)
-        if i < num_workspaces-1:
-            workspaces_str += '  '
-    workspaces_str += FG_BODY_NORMAL
-    return workspaces_str
 
 def sections_to_string(sections, separator):
     display_string = ''
@@ -169,8 +155,6 @@ def run():
 
         low_battery = battery_level <= 15 and battery_status != CHARGING
         high_volume = NOVOL if volume == 0 else (LOWVOL if volume <= 60 else HIGHVOL)
-        workspaces = status_workspaces(low_battery)
-
         # run expensive network operations only once in a while
         if cycle_num % 40 == 0:
             connected = status_connected()
@@ -186,8 +170,8 @@ def run():
         bg_body = (BG_LOW_BATTERY if low_battery else BG_BODY_NORMAL)
 
         sections_status = [
-            Section(LEFT, fg_header, bg_header,
-                    str(workspaces), fg_body, bg_body, ''),
+            #Section(LEFT, fg_header, bg_header,
+            #       str(workspaces), fg_body, bg_body, ''),
             Section(CENTER, fg_header, bg_header,
                     str(datetime), fg_body, bg_body, ''),
             Section(RIGHT, fg_header, bg_header,

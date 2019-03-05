@@ -1,8 +1,8 @@
 #---SETUP---
 set $mod Mod1
 font pango:GohuFont Nerd Font 12
-exec --no-startup-id i3lock-next '' 'GohuFont Nerd Font' 20
-exec --no-startup-id xautolock -time 10 -locker "i3lock-next '' 'GohuFont Nerd Font' 20
+exec --no-startup-id sudo i3lock-next '' 'GohuFont Nerd Font' 20
+exec --no-startup-id sudo xautolock -time 10 -locker "sudo i3lock-next '' 'GohuFont Nerd Font' 20"
 
 #---i3 DEBUGGING (F1-3)---
 bindsym $mod+F1 restart
@@ -10,34 +10,36 @@ bindsym $mod+F2 exec --no-startup-id /home/hty/.config/i3/lemonbar.sh
 bindsym $mod+F3 exec --no-startup-id /home/hty/.config/i3/conky.sh
 
 #---APPLICATIONS---
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
+bindsym $mod+grave kill
 bindsym $mod+Tab kill
-bindsym $mod+apostrophe exec sudo j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Nerd Font-12' -nb '#3B4252' -nf '#D8DEE9' -sb '#BF616A' -sf '#ECEFF4'" --term="i3-sensible-terminal"
-bindsym $mod+semicolon exec sudo j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Nerd Font-12' -nb '#3B4252' -nf '#D8DEE9' -sb '#BF616A' -sf '#ECEFF4'" --term="i3-sensible-terminal"
+bindsym $mod+apostrophe exec j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Nerd Font-12' -nb '#000000' -nf '#C251BD' -sb '#053fba' -sf '#c251bd'" --term="i3-sensible-terminal"
+bindsym $mod+semicolon exec sudo j4-dmenu-desktop --dmenu="dmenu -i -fn 'GohuFont Nerd Font-12' -nb '#000000' -nf '#C251BD' -sb '#053fba' -sf '#c251bd'" --term="i3-sensible-terminal"
 
-bindsym $mod+q exec chromium --high-dpi-support=1 --force-device-scale-factor=1.5
-bindsym $mod+w exec sudo nemo
-bindsym $mod+e exec slack
-bindsym $mod+r exec sudo i3-sensible-terminal -e vim
+bindsym $mod+q exec chromium --high-dpi-support=1 --force-device-scale-factor=1.65
+bindsym $mod+w exec urxvt -e mc
+bindsym $mod+e exec urxvt -e nvim
+bindsym $mod+r exec urxvt -e emacs -nw
 
 #---AUXILLARY COMMANDS (F9-12)---
-bindsym $mod+F9 exec i3lock-next '' 'GohuFont Nerd Font' 20
-bindsym $mod+F10 exec systemctl suspend && i3lock-next '' 'GohuFont Nerd Font' 20
-bindsym $mod+F11 exec systemctl reboot
-bindsym $mod+F12 exec systemctl poweroff
+bindsym $mod+F9 exec sudo i3lock-next '' 'GohuFont Nerd Font' 20
+bindsym $mod+Shift+F9 exec sudo i3lock-next '' 'GohuFont Nerd Font' 20
+bindsym $mod+Shift+F10 exec systemctl suspend && sudo i3lock-next '' 'GohuFont Nerd Font' 20
+bindsym $mod+Shift+F11 exec systemctl reboot
+bindsym $mod+Shift+F12 exec systemctl poweroff
 
 #---WINDOW SETTINGS---
-gaps inner 11
-new_window pixel 2
+gaps inner 6
+default_border pixel 3
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #D8DEE9 #ECEFF4 #3B4252 #D8DEE9   #D8DEE9
-client.focused_inactive #D8DEE9 #ECEFF4 #3B4252 #D8DEE9   #D8DEE9
-client.unfocused        #3B4252 #3B4252 #D8DEE9 #3B4252   #3B4252
-client.urgent           #BF616A #3B4252 #BF616A #BF616A   #BF616A
-client.placeholder      #3B4252 #3B4252 #D8DEE9 #3B4252   #3B4252
+#class                  border  backgr. text    indicator child_border
+client.focused          #c251bd #000000 #c251bd #c251bd   #c251bd
+client.focused_inactive #c251bd #000000 #c251bd #c251bd   #c251bd
+client.unfocused        #c251bd #000000 #706070 #000000   #000000
+client.urgent           #c251bd #000000 #4979db #4979db   #4979db
+client.placeholder      #c251bd #000000 #4979db #4979db   #4979db
 
-client.background       #D8DEE9
+client.background       #000000
 
 #---LAPTOP KEYS---
 bindsym XF86KbdBrightnessUp exec /usr/local/bin/kb-light.py + 2
@@ -50,40 +52,51 @@ bindsym XF86AudioMute exec amixer sset 'Master' toggle
 bindsym Print exec scrot '%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f ~/Pictures/'
 
 #---WINDOW MANAGING---
-bindsym $mod+F4 mode resize
-mode "resize" {
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        
-        bindsym w resize shrink width 10 px or 10 ppt
-        bindsym a resize grow height 10 px or 10 ppt
+bindsym $mod+F4 mode window
+mode "window" {
+
+	bindsym a resize shrink width 10 px or 10 ppt
+        bindsym w resize grow height 10 px or 10 ppt
         bindsym s resize shrink height 10 px or 10 ppt
         bindsym d resize grow width 10 px or 10 ppt
 
-	bindsym F4 mode "default"
+	bindsym Left move left
+	bindsym Down move down
+	bindsym Up move up
+	bindsym Right move right
+	
+        bindsym 1 move container to workspace "1"
+        bindsym 2 move container to workspace "2"
+        bindsym 3 move container to workspace "3"
+        bindsym 4 move container to workspace "4"
+        bindsym 5 move container to workspace "5"
+        bindsym 6 move container to workspace "6"
+        bindsym 7 move container to workspace "7"
+        bindsym 8 move container to workspace "8"
+        bindsym 9 move container to workspace "9"
+        bindsym 0 move container to workspace "10"
+
+	bindsym $mod+F4 mode "default"
+	bindsym F4 mode "default"	
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
-bindsym $mod+F5 mode focus
-mode "focus" {
-	bindsym $mod+Left focus left
-	bindsym $mod+Down focus down
-	bindsym $mod+Up focus up
-	bindsym $mod+Right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Right focus right
+bindsym $mod+Up focus up
+bindsym $mod+Down focus down
 
-	bindsym $mod+a move left
-	bindsym $mod+s move down
-	bindsym $mod+w move up
-	bindsym $mod+d move right
-
-	bindsym F5 mode "default"	
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
+bindsym $mod+1 workspace "1"
+bindsym $mod+2 workspace "2"
+bindsym $mod+3 workspace "3"
+bindsym $mod+4 workspace "4"
+bindsym $mod+5 workspace "5"
+bindsym $mod+6 workspace "6"
+bindsym $mod+7 workspace "7"
+bindsym $mod+8 workspace "8"
+bindsym $mod+9 workspace "9"
+bindsym $mod+0 workspace "10"
 
 bindsym $mod+minus split h
 bindsym $mod+equal split v
@@ -93,15 +106,3 @@ bindsym $mod+bracketright layout toggle split
 bindsym $mod+space floating toggle
 floating_modifier $mod
 bindsym $mod+backslash focus mode_toggle
-bindsym $mod+p focus parent
-
-bindsym $mod+1 workspace "1"
-bindsym $mod+2 workspace "2"
-bindsym $mod+3 workspace "3"
-bindsym $mod+4 workspace "4"
-bindsym $mod+5 workspace "5"
-bindsym $mod+6 move container to workspace "1"
-bindsym $mod+7 move container to workspace "2"
-bindsym $mod+8 move container to workspace "3"
-bindsym $mod+9 move container to workspace "4"
-bindsym $mod+0 move container to workspace "5"
