@@ -4,7 +4,7 @@ OS: Manjaro Linux
 
 Window Manager: [i3-gaps](https://github.com/Airblader/i3) 
 
-Color Palette: Nord by [Arctic Ice Studio](https://www.github.com/arcticicestudio/nord)
+Color Palette: Cyberpunk (or just neon pink, purple, and blue)
 
 Conky Font: Terminus
 
